@@ -1,0 +1,200 @@
+﻿@model List<Web_QLNH.Models.Table>
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+    List<Web_QLNH.Models.LoaiMonAn> lma = ViewBag.lma;
+    List<Web_QLNH.Models.MonAn> monan = ViewBag.monan;
+    List<Web_QLNH.Models.ChiTietDonHang> order = ViewBag.order;
+}
+<html lang="en">
+<head>
+    <title>Login V2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/util.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.js"></script>
+    <script src="~/Scripts/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    @*<div class="row">
+            <div class="col-md-4" style="background-color:gainsboro">
+                <div class="tablelist" style="padding-top: 60px">
+                    @foreach (var table in Model)
+                    {
+                        switch (table.tinhtrang)
+                        {
+                            case 1:<button class="btn_ban" style="width: 20%; height: 100px; background-color:blue; margin-left:6px;margin-bottom:6px" data-id=@table.so data-type=@table.tinhtrang>Bàn @table.so <br /> @table.succhua người</button>
+                                break;
+                            case 2: <button class="btn_ban" style="width: 20%; height: 100px; background-color:yellow; margin-left:6px;margin-bottom:6px" data-id=@table.so data-type=@table.tinhtrang>Bàn @table.so <br /> @table.succhua người</button>
+                                break;
+                            case 3: <button class="btn_ban" style="width: 20%; height: 100px; background-color:green; margin-left:6px;margin-bottom:6px" data-id=@table.so data-type=@table.tinhtrang>Bàn @table.so <br /> @table.succhua người</button>
+                                break;
+                            case 4: <button class="btn_ban" style="width: 20%; height: 100px; background-color:indianred; margin-left:6px;margin-bottom:6px" data-id=@table.so data-type=@table.tinhtrang>Bàn @table.so <br /> @table.succhua người</button>
+                                break;
+                            case 5: <button class="btn_ban" style="width: 20%; height: 100px; background-color:purple; margin-left:6px;margin-bottom:6px" data-id=@table.so data-type=@table.tinhtrang>Bàn @table.so <br /> @table.succhua người</button>
+                                break;
+                        }
+                    }
+                </div>
+            </div>
+
+
+            <div class="col-md-8" style="background-color:aqua" hidden id="menua">
+
+                <h3 id="tenban" style="text-align:center">Bàn số</h3>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <div style="padding:10px;">
+                                <div class="col-md-3 control-label">Loại:</div>
+                                <div class="col-md-9" style="width:50%">
+                                    <select class="form-control" name="quantity" placeholder="" id="quantity">
+                                        @foreach (var loai in lma)
+                                        {
+                                            <option value="@loai.ma"> @loai.ten</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="monan"></div>
+                            <div style="padding:10px;" id="Monan1">
+                                <div class="col-md-3 control-label">Món ăn</div>
+                                <div class="col-md-9" style="width:50%">
+                                    <select class="form-control" name="classchange" placeholder="" id="monanid">
+                                        @foreach (var item in monan)
+                                        {
+                                            <option value="@item.ma"> @item.ten</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <button class="form-control" id="goimon" style="background-color:chartreuse; width:130px; height:50px;margin:10px;">Gọi món</button>
+                            <input type="number" id="quan" class="form-control" style="margin:10px; width:47%" placeholder="Số lượng"/>
+                        </div>
+                    </div>
+                </div>
+                <div id="bangorder"></div>
+
+            </div>
+
+        </div>*@
+
+    <div class="col-md-4" style="background-color:gainsboro">
+        <div class="tablelist" style="padding-top: 60px">
+            @foreach (var table in Model)
+            {
+                switch (table.Status)
+                {
+                    case 0:<button class="btn_ban" style="width: 20%; height: 100px; background-color:aqua; margin-left:6px;margin-bottom:6px" id="@table.Id" data-id=@table.Id data-type=@table.Status>Bàn @table.Id <br /> @table.Area</button>
+                    break;
+                case 1: <button class="btn_ban" style="width: 20%; height: 100px; background-color:yellow; margin-left:6px;margin-bottom:6px" id="@table.Id" data-id=@table.Id data-type=@table.Status>Bàn @table.Id <br /> @table.Area</button>
+                break;
+            default: <button class="btn_ban" style="width: 20%; height: 100px; background-color:red; margin-left:6px;margin-bottom:6px" id="@table.Id" data-id=@table.Id data-type=@table.Status>Bàn @table.Id <br /> @table.Area</button>
+            break;
+
+    }
+}
+        </div>
+    </div>
+   
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script>
+        var curent = 0;
+        $('.btn_ban').off('click').on('click', function () {
+           
+            var soban = $(this).data('id');       
+            var loai = $(this).data('type');
+            //
+            $.ajax({
+                url: '/BoiBan/reservation?soban=' + soban,
+                type: 'post',
+                dataType: 'json',
+ 
+            }).done(function (result) {
+                if (result.status = true) {
+                    alert('Thêm thành công');
+                    $("#" + soban).css("background-color", "yellow");
+                }
+                else {
+                    alert('thất bại');
+                }
+            });
+        })
+
+        $('#quantity').change(function () {
+            $('#Monan1').remove();
+            $('#monan').empty();
+            $.ajax({
+                url: '/BoiBan/DsMonAn?ma=' + $(this).val(),
+                type: 'GET',
+                cache: false,
+            }).done(function (result) {
+                alert(result.result);
+            });
+        })
+
+        $('#goimon').click(function () {
+            alert(curent);
+            var mamonan = $('#monanid').val();
+            var soban = curent;
+            var soluong = $('#quan').val();
+            $.ajax({
+                url: '/BoiBan/GoiMon',
+                data: {
+                    soban: soban,
+                    mamonan: mamonan,
+                    soluong: soluong
+                },
+                type: 'GET',
+                cache: false,
+            }).done(function (result) {
+                alert('Đã gọi');
+            });
+
+        })
+
+    </script>
+
+</body>
+</html>
+

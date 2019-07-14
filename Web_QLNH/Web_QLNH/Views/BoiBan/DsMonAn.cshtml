@@ -1,0 +1,21 @@
+﻿
+@model List<Web_QLNH.Models.MonAn>
+@{
+
+    Layout = null;
+
+}
+
+<div style="padding:10px;">
+    <div class="col-md-3 control-label">Món ăn: </div>
+    <div class="col-md-9"  style="width:50%">
+        <select class="form-control" name="classchange" placeholder="" id="monanid">
+            @foreach (var item in Model)
+            {
+                <option value="@item.ma"> @item.ten</option>
+            }
+        </select>
+
+    </div>
+    <div class="clearfix"></div>
+</div>
